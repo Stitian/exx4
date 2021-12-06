@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>七步洗手法</title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+       img{
+	     width:400px;
+       	 height:200px;
+       }
+       #view_box{
+	     width:1000px;
+       	 height:200px;
+       	
+       	 margin:50px auto;
+       	 
+       	 border-radius:25px;
+       	
+       	 overflow:hidden;
+       }
+       #inner{
+       	 position:relative;
+       	 left:0px;
+       	 
+	     width:6400px;
+       	 height:200px;
+       	
+       	 display:flex;
+       	 justify-content:space-between;
+       }
+       #div1,#div2{
+	     width:3200px;
+       	 height:200px;
+
+       	 display:flex;
+       	 justify-content:space-between;
+       }
+       p{
+      	text-align: center;
+      }
+    </style>
+    <script type="text/javascript">
+      var left = 0;
+      var raf;
+      function init(){
+    	  document.getElementById("div2").innerHTML = document.getElementById("div1").innerHTML;
+    	  document.getElementById("view_box").onmouseover = function(){
+    		  window.cancelAnimationFrame(raf);
+    	  }
+    	  document.getElementById("view_box").onmouseout = function(){
+    		  moveImage();
+    	  }
+    	  
+    	  moveImage();
+      }
+      function moveImage(){
+    	  document.getElementById("inner").style.left = left+"px";
+    	  left-=2;
+    	  if(left <= -3200){
+    		  left = 0;
+    	  }
+    	  raf = window.requestAnimationFrame(moveImage);
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    
+    <div id="view_box">
+      <div id="inner">
+        <div id="div1">
+          <img src="res/1.jpg" />
+          <img src="res/2.jpg" />
+          <img src="res/3.jpg" />
+          <img src="res/4.jpg" />
+          <img src="res/5.jpg" />
+          <img src="res/6.jpg" />
+          <img src="res/7.jpg" />
+          <img src="res/8.jpg" />
+        </div>
+        <div id="div2"></div>
+      </div>
+    </div>
+    <p><a href="index.html">返回首页</a></p>
+  </body>
+</html>
